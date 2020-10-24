@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Submit a word</title>
+<meta charset="utf-8">
+</head>
+<body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+    <h1>Submit a word</h1>
+    <form action = "/actionpage.php" id = "wordform">
+        Word: <input type="text" name= "word"> 
+        <br>
+        Category: <select name = "Categories" id ="wordcategory">
+            <option value = "currentslang">Current Slang</option>
+            <option value = "historical">Historical</option>
+            <option value = "LGBTQ+">LGBTQ+</option>
+            <option value = "other">other</option>
+        </select>
+        <br>
+        Part Of Speech: <select name = "PartofSpeech" id ="wordpartofspeech">
+            <option value = "verb">Verb</option>
+            <option value = "noun">Noun</option>
+            <option value = "adjective">Adjective</option>
+            <option value = "other">other</option>
+        </select>
+        <br>
+        Defintion: <textarea name="Defintion" id = "worddefintion"></textarea>
+        <br>
+        Synonyms: <textarea name="Synonyms" id = "worddsynonyms"></textarea>
+        <br>
+        Attach Media: <input type="file" id="img" name="img" accept="image/*">
+        <input type = "submit">
+    </form>
+
+</body>
+</html>
