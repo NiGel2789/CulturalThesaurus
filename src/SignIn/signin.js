@@ -13,6 +13,13 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import sidebarPhoto from './SignUpSide.png';
+import FacebookLogin from 'react-facebook-login';
+import GoogleBtn from './GoogleBtn';
+import LinkedinLogin from './linkedinSignIn.png';
+
+const responseFacebook = (response) => {
+  console.log(response);
+}
 
 function Copyright() {
   return (
@@ -125,10 +132,21 @@ export default function SignInSide() {
                 </Link>
               </Grid>
             </Grid>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
           </form>
+          <Box mt={5}>
+              <Copyright />
+          </Box>
+          <br></br>
+          <FacebookLogin
+              appId="726439581639807"
+             autoLoad={true}
+            fields="name,email,picture"
+            icon="fa-facebook"
+            callback={responseFacebook} />
+            <br></br>
+            <GoogleBtn/>
+            <br></br>
+            <div  style={{ backgroundImage: "url(" + LinkedinLogin + ")",width: '215px',height: '41px' }}> </div>
         </div>
       </Grid>
     </Grid>
