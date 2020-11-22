@@ -8,10 +8,16 @@ import createWord from './Post/createWord'
 import readWord from './Post/readWord'
 import updateWord from './Post/updateWord'
 import deleteWord from './Post/deleteWord'
+import SignUp from './SignIn/signup'
+import Menu from './Core/Menu'
+import Blog from './Landing/Landing'
 
 const MainRouter = () => {
 
     return (<div>
+
+      <Menu></Menu>
+      
       <Switch>
         <Route exact path="/home" component={Home}/>
         <Route exact path="/signin" component={SignIn}/>
@@ -21,6 +27,8 @@ const MainRouter = () => {
         <Route exact path="/readword" component={readWord}/>
         <Route exact path="/updateword" component={updateWord}/>
         <Route exact path="/deleteword" component={deleteWord}/>
+        <Route exact path="/signup" component={SignUp}/>
+        <Route exact path="/landing" component={Blog}/>
 
       </Switch>
     </div>)
