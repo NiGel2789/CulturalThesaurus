@@ -6,13 +6,13 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-
+import fry from './fry.gif';
 const useStyles = makeStyles({
   root: {
     minWidth: 100,
     maxWidth: 500,
     margin: "auto",
-    
+    marginTop: "20px"
   },
   title: {
     fontSize: 30
@@ -21,7 +21,6 @@ const useStyles = makeStyles({
     marginBottom: 12
   },
   media: {
-    backgroundImage: URL("fry.gif")
   }
 });
 const theme = createMuiTheme({
@@ -57,7 +56,10 @@ export default function SimpleCard() {
         <Typography component="href">
           {'Suspcious, oddball, weird.'}
         </Typography>
-        <div className={classes.media} ></div>
+        <img src={fry} alt="loading..." style={{ paddingTop: '30px', paddingBottom: '30px', display: 'block', marginLeft:'auto', marginRight: 'auto'}} />
+        <Typography className={classes.pos}>
+          Created by Nigel, last edited on 11/27/2020 by Mary. 
+        </Typography>
       </CardContent>
       <CardActions>
         <Button size="small" color="primary" >Delete</Button>
