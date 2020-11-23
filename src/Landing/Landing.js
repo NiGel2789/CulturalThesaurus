@@ -20,6 +20,7 @@ import lit from './lit.gif';
 import sus from './sus.gif';
 import bet from './bet.gif';
 
+
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
@@ -62,7 +63,6 @@ export default function Blog() {
         <div  style={{ backgroundImage: "url(" + Welcome + ")",width: '1232px',height: '500px', paddingTop: '10px', paddingBottom:'20px', boxShadow: '5px 10px' }}> </div>
           <Grid container spacing={5} className={classes.mainGrid}>
             <div style={{width: '847px'}}>
-
           {/*Word of the Day Card*/}
           <Card className={classes.root} variant="outlined" style={{marginBottom: '20px', borderRadius: '40px'}}>
             <CardContent style={{marginLeft: '15px', marginTop: '10px'}}>

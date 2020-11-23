@@ -9,10 +9,7 @@ import createWord from './Post/createWord'
 import readWord from './Post/readWord'
 import updateWord from './Post/updateWord'
 import deleteWord from './Post/deleteWord'
-import SignUp from './SignIn/signup'
-import Menu from './Core/Menu'
 import Blog from './Landing/Landing'
-
 import Menu from './Core/Menu'
 import SearchAppBar from './Core/search'
 const MainRouter = () => {
@@ -20,7 +17,6 @@ const MainRouter = () => {
     return (<div>
 
       <Menu></Menu>
-      <SearchAppBar></SearchAppBar>
       
       <Switch>
         <Route exact path="/home" component={Home}/>
@@ -34,8 +30,8 @@ const MainRouter = () => {
         <Route exact path="/deleteword" component={deleteWord}/>
         <Route exact path="/signup" component={SignUp}/>
         <Route exact path="/landing" component={Blog}/>
-
       </Switch>
+
     </div>)
 }
 

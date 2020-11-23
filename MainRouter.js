@@ -17,7 +17,6 @@ const MainRouter = () => {
     return (<div>
 
       <Menu></Menu>
-      <SearchAppBar></SearchAppBar>
       
       <Switch>
         <Route exact path="/home" component={Home}/>
