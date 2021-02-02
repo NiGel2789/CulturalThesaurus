@@ -43,9 +43,9 @@ const Menu = withRouter(({history}) => (
           </Button>
         </Link>  
 
-        <Link to="/readword">
+        <Link to="/wordpage">
           <Button >
-            Read Word
+            Random Word
           </Button>
         </Link>  
 
