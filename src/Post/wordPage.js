@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import fry from './fry.gif';
+import "./card.css"
 const useStyles = makeStyles({
   root: {
     minWidth: 100,
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
     marginTop: "20px"
   },
   title: {
-    fontSize: 30
+    fontSize: 50
   },
   pos: {
     marginBottom: 12
@@ -39,15 +40,15 @@ export default function SimpleCard() {
 
   return (
     <ThemeProvider theme={theme}>
-    <Card className={classes.root} variant="outlined" >
+    <Card className={classes.root} variant="outlined" id="cardstyle">
       <CardContent>
-        <Typography className={classes.title} variant="h5" component="h2">
-          Sus
+        <Typography className={classes.title} variant="h5" component="h1">
+          'Sus'
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
           adjective
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography variant="body2" component="h2">
           Short for suspicous.
           <br />
           {'"That player is so Sus"'}
@@ -62,7 +63,7 @@ export default function SimpleCard() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" >Delete</Button>
+        <Button size="small" >Delete</Button>
       </CardActions>
     </Card>
     </ThemeProvider>

@@ -1,5 +1,22 @@
 #cardstyle {
 	border-color: grey;
 	border-style: dashed;
-	border-radius: 2px;
+	border-radius: 20px;
+	font-family:'Times New Roman', Times, serif;
+	font-weight: bold;
+	
+}
+.definition{
+	width: 200%;
+	height: 150px;
+	padding: 12px 20px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	background-color: #f8f8f8;
+	resize: none;
+}
+#single{
+	color:black;
+	padding: 16px 32px;
 }
