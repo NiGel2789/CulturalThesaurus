@@ -9,6 +9,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import fry from "./fry.gif"
 
 import "./card.css"
+import { yellow } from "@material-ui/core/colors";
 const useStyles = makeStyles({
   root: {
     minWidth: 100,
@@ -40,7 +41,11 @@ export default function SimpleCard() {
   //const bull = <span className={classes.bullet}>•</span>;
 
   return (
+    
     <ThemeProvider theme={theme}>
+       <Typography variant="h4" align="center" component="h1" gutterBottom style={{padding: "1%"}}>
+          Your Posts
+          </Typography>
     <Card className={classes.root} variant="outlined" id="cardstyle">
       <CardContent>
         <Typography className={classes.title} variant="h5" component="h1">
@@ -54,11 +59,14 @@ export default function SimpleCard() {
           <br />
           {'"That player is so Sus"'}
         </Typography>
+        <Button size='xsmall' style={{backgroundColor: "yellow"}}>Edit</Button>
         <br />
         <Typography component="href">
           {'Suspcious, oddball, weird.'}
         </Typography>
+        <Button size='xsmall' style={{backgroundColor: "yellow"}}>Edit</Button>
         <img src={fry} alt="loading..." style={{ paddingTop: '30px', paddingBottom: '30px', display: 'block', marginLeft:'auto', marginRight: 'auto'}} />
+        <Button size='xsmall' style={{backgroundColor: "yellow"}}>Edit</Button>
         <Typography className={classes.pos}>
           Created by Nigel, last edited on 11/27/2020 by Mary. 
         </Typography>
