@@ -48,6 +48,9 @@ export default function SimpleCard() {
         <Typography className={classes.pos} color="textSecondary">
           adjective
         </Typography>
+        <Typography className={classes.pos} style = {{color: "blue"}}>
+          Gamer-Lingo
+        </Typography>
         <Typography variant="body2" component="h2">
           Short for suspicous.
           <br />
