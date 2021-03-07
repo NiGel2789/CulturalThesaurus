@@ -11,6 +11,7 @@ import updateWord from './Post/updateWord'
 import deleteWord from './Post/deleteWord'
 import Blog from './Landing/Landing'
 import Menu from './Core/Menu'
+import underConstruction from './underConstruction'
 import SearchAppBar from './Core/search'
 const MainRouter = () => {
     
@@ -30,6 +31,7 @@ const MainRouter = () => {
         <Route exact path="/deleteword" component={deleteWord}/>
         <Route exact path="/signup" component={SignUp}/>
         <Route exact path="/landing" component={Blog}/>
+        <Route exact path="/underConstruction" component={underConstruction}/>
       </Switch>
 
     </div>)
