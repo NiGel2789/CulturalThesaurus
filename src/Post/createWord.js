@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./card.css"
 import { Form, Field } from 'react-final-form';
 import { TextField, Select } from 'final-form-material-ui';
+
 import {
   Typography,
   Paper,
@@ -83,6 +85,7 @@ export default function createWord(){
                     <Grid item xs={24}>
                       <Field
                         fullWidth
+                        class = "definition"
                         name="defintion"
                         component={"textarea"}
                         multiline
@@ -124,7 +127,8 @@ export default function createWord(){
                       <Grid item xs={6}>
                         
                       </Grid>
-                  
+
+                      <input type='file' id="single" onChange ={submitting}></input>
                     <Grid item style={{ marginTop: 16 }}>
                       <Button
                         type="button"
@@ -135,7 +139,7 @@ export default function createWord(){
                         Reset
                       </Button>
                     </Grid>
-                    <Grid item style={{ marginTop: 16 }}>
+                    <Grid item style={{ marginTop: 16}}>
                       <Button
                         variant="contained"
                         color="primary"

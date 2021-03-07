@@ -4,62 +4,53 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import {Link, withRouter} from 'react-router-dom'
-
+import "./core.css"
+import CulturalThesaurus from "./CulturalThesaurusbig.png"
+import { NoEncryption } from '@material-ui/icons'
 
 const Menu = withRouter(({history}) => (
   <AppBar position="static">
-    <Toolbar>
-      <Typography variant="h6" color="inherit">
+    <Toolbar id = 'navBar'>
+      {/* <Typography variant="h6" color="inherit">
         Cultural Thesaurus
-      </Typography>
+      </Typography> */}
+       <Link to="/landing">
+       <img src={CulturalThesaurus} alt="Home" style={{ display: 'block', marginLeft:'auto', marginRight: 'auto', width: '200px', padding: '0'}} />
+        </Link>
+      
       <div>
 
-        <Link to="/home">
-          <Button >Home</Button>
-        </Link>
         <Link to="/signin">
-          <Button >Sign In</Button>
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow"}}>Sign In</Button>
         </Link>
 
         <Link to="/signup">
-          <Button >Sign Up</Button>
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow"}}>Sign Up</Button>
         </Link>
 
         <Link to="/user">
-          <Button >
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow"}}>
             User
           </Button>
         </Link>    
 
         <Link to="/about">
-          <Button >
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow"}}>
             About
           </Button>
         </Link>      
 
         <Link to="/createword">
-          <Button >
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow"}}>
             Create Word
           </Button>
         </Link>  
 
         <Link to="/wordpage">
-          <Button >
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow"}}>
             Random Word
           </Button>
-        </Link>  
-
-        <Link to="/updateword">
-          <Button >
-            Update Word
-          </Button>
-        </Link>  
-
-        <Link to="/deleteword">
-          <Button >
-            Delete Word
-          </Button>
-        </Link>  
+        </Link>
 
       </div>
       
