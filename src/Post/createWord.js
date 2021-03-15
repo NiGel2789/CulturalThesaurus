@@ -41,10 +41,10 @@ export default function createWord(){
     return (
         <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
           <CssBaseline />
-          <Typography variant="h4" align="center" component="h1" gutterBottom>
+          <Typography variant="h2" align="center" component="h1" gutterBottom style={{padding: "1%", fontFamily: "Playfair Display Regular"}}>
            Submit a Word
           </Typography>
-          <Typography variant="h5" align="center" component="h2" gutterBottom>
+          <Typography variant="h5" align="center" component="h2" gutterBottom style={{padding: "1%", fontFamily: "Playfair Display Regular"}}>
             There are no limits to what you can submit. 
           </Typography>
           <Typography paragraph>

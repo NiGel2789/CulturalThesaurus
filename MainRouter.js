@@ -12,6 +12,9 @@ import deleteWord from './Post/deleteWord'
 import Blog from './Landing/Landing'
 import Menu from './Core/Menu'
 import SearchAppBar from './Core/search'
+import Landing from './Landing/Landing'
+import wordBattles from './WordBattles/wordBattles'
+import categories from './Post/categories'
 const MainRouter = () => {
     
     return (<div>
@@ -26,10 +29,11 @@ const MainRouter = () => {
         <Route exact path="/about" component={About}/>
         <Route exact path="/createword" component={createWord}/>
         <Route exact path="/wordPage" component={wordPage}/>
-        <Route exact path="/updateword" component={updateWord}/>
         <Route exact path="/deleteword" component={deleteWord}/>
         <Route exact path="/signup" component={SignUp}/>
-        <Route exact path="/landing" component={Blog}/>
+        <Route exact path="/landing" component={Landing}/>
+        <Route exact path="/wordbattles" component={wordBattles}/>
+        <Route exact path="/categories" component={categories}/>
       </Switch>
 
     </div>)

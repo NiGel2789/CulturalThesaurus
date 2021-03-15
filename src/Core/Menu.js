@@ -10,7 +10,7 @@ import { NoEncryption } from '@material-ui/icons'
 
 const Menu = withRouter(({history}) => (
   <AppBar position="static">
-    <Toolbar id = 'navBar'>
+    <Toolbar id = 'navBar' style={{fontFamily: "Playfair Display Regular"}}>
       {/* <Typography variant="h6" color="inherit">
         Cultural Thesaurus
       </Typography> */}
@@ -21,36 +21,43 @@ const Menu = withRouter(({history}) => (
       <div>
 
         <Link to="/signin">
-          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow"}}>Sign In</Button>
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow", fontFamily: "Playfair Display Bold"}}>Sign In</Button>
         </Link>
 
         <Link to="/signup">
-          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow"}}>Sign Up</Button>
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow", fontFamily: "Playfair Display Bold"}}>Sign Up</Button>
         </Link>
 
         <Link to="/user">
-          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow"}}>
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow", fontFamily: "Playfair Display Bold"}}>
             User
           </Button>
         </Link>    
 
         <Link to="/about">
-          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow"}}>
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow", fontFamily: "Playfair Display Bold"}}>
             About
           </Button>
         </Link>      
 
         <Link to="/createword">
-          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow"}}>
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow", fontFamily: "Playfair Display Bold"}}>
             Create Word
           </Button>
         </Link>  
 
         <Link to="/wordpage">
-          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow"}}>
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow", fontFamily: "Playfair Display Bold"}}>
             Random Word
           </Button>
         </Link>
+
+        <Link to="/wordBattles">
+          <Button style ={{marginLeft: "20px", fontSize: "150%", backgroundColor: "yellow", fontFamily: "Playfair Display Bold"}}>
+            Word Battles
+          </Button>
+        </Link>
+
 
       </div>
       

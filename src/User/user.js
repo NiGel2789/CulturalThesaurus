@@ -15,7 +15,8 @@ const useStyles = makeStyles({
     minWidth: 100,
     maxWidth: 500,
     margin: "auto",
-    marginTop: "20px"
+    marginTop: "20px",
+    fontFamily: "Playfair Display Regular"
   },
   title: {
     fontSize: 50
@@ -43,7 +44,7 @@ export default function SimpleCard() {
   return (
     
     <ThemeProvider theme={theme}>
-       <Typography variant="h4" align="center" component="h1" gutterBottom style={{padding: "1%"}}>
+       <Typography variant="h2" align="center" component="h1" gutterBottom style={{padding: "1%", fontFamily: "Playfair Display Regular"}}>
           Your Posts
           </Typography>
     <Card className={classes.root} variant="outlined" id="cardstyle">

@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import fry from './fry.gif';
+import Link from '@material-ui/core/Link';
 import "./card.css"
 const useStyles = makeStyles({
   root: {
@@ -36,6 +37,7 @@ const theme = createMuiTheme({
 
 export default function SimpleCard() {
   const classes = useStyles();
+  const preventDefault = (event) => event.preventDefault();
   //const bull = <span className={classes.bullet}>•</span>;
 
   return (
@@ -64,9 +66,13 @@ export default function SimpleCard() {
         <Typography className={classes.pos}>
           Created by Nigel, last edited on 11/27/2020 by Mary. 
         </Typography>
+        <Typography> Similar to... <br></br>
+        <Link href = "#" onClick={preventDefault} color="blue"> Suspicous </Link>,
+        <Link href = "#" onClick={preventDefault} color="blue"> Scary </Link>
+        </Typography>
+        
       </CardContent>
       <CardActions>
-        <Button size="small" >Delete</Button>
       </CardActions>
     </Card>
     </ThemeProvider>

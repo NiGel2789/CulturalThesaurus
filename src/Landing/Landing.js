@@ -7,8 +7,11 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Header from './Header';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Main from './Main';
 import Sidebar from './Sidebar';
+import fry from './fry.gif';
+import Link from '@material-ui/core/Link';
 import Footer from './Footer';
 import Welcome from './2.jpg';
 import Card from '@material-ui/core/Card';
@@ -25,15 +28,33 @@ const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
   },
+  title: {
+    fontSize: 50
+  },
+  root: {
+    minWidth: 100,
+    maxWidth: 1000,
+    margin: "auto",
+    marginTop: "20px"
+    
+  }
 }));
 
 const sections = [
   { title: 'Browse', url: '#' },
-  { title: 'Categories', url: '#' },
+  { title: 'Categories', url: '/categories' },
   { title: 'Random Word', url: '#' },
-  { title: 'About', url: '#' },
+  { title: 'About', url: '/about' },
 ];
-
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#ffff8d',
+      main: '#ffea00',
+      contrastText: '#ffffff',
+    },
+  },
+});
 const sidebar = {
   title: 'Shesaurus Stats',
   description:
@@ -53,105 +74,129 @@ const sidebar = {
 
 export default function Blog() {
   const classes = useStyles();
-  
+  const preventDefault = (event) => event.preventDefault();
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" style = {{fontFamily: "Playfair Display Regular"}}>
         <Header title="CulturalThesaurus" sections={sections} />
         <main>
         <div  style={{ backgroundImage: "url(" + Welcome + ")",width: '1232px',height: '500px', paddingTop: '10px', paddingBottom:'20px', boxShadow: '5px 10px' }}> </div>
           <Grid container spacing={5} className={classes.mainGrid}>
             <div style={{width: '847px'}}>
           {/*Word of the Day Card*/}
-          <Card className={classes.root} variant="outlined" style={{marginBottom: '20px', borderRadius: '40px'}}>
-            <CardContent style={{marginLeft: '15px', marginTop: '10px'}}>
-             <Typography className={classes.title} color="textSecondary" gutterBottom>
-                 Word of the Day
-              </Typography>
-              <Typography variant="h2" component="h2">
-                 'Lit'
-               </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                  adjective
-              </Typography>
-               <Typography variant="body1" fontSize component="p">
-               used to describe something that is "exciting or 
-                <br />
-                  {'excellent."'}
-               </Typography>
-               <br></br>
-               <br></br>
-               <Typography variant="body1" fontSize component="p">
-                  Also see: dank, ill, amazeballs
-              </Typography>
-               <img src={lit} alt="loading..." style={{ paddingTop: '30px', paddingBottom: '30px', display: 'block', marginLeft:'auto', marginRight: 'auto'}} />
-               <Typography className={classes.pos} color="textSecondary">
-                  Created by Nigel, last edited on 11/27/2020 by Mary. 
-              </Typography>
-             </CardContent>
-             <CardActions style={{marginLeft: '15px',  marginBottom: '10px'}}>
-              <Button size="small">Discover 'Lit'</Button>
+          <ThemeProvider theme={theme}>
+    <Card className={classes.root} variant="outlined" id="cardstyle" style={{marginBottom: '20px', borderRadius: '40px'}}>
+      <CardContent>
+        <Typography className={classes.title} variant="h5" component="h1">
+          'Sus'
+        </Typography>
+        <Typography className={classes.pos} color="textSecondary">
+          adjective
+        </Typography>
+        <Typography className={classes.pos} style = {{color: "blue"}}>
+          Gamer-Lingo
+        </Typography>
+        <Typography variant="body2" component="h2">
+          Short for suspicous.
+          <br />
+          {'"That player is so Sus"'}
+        </Typography>
+        <br />
+        <Typography component="href">
+          {'Suspcious, oddball, weird.'}
+        </Typography>
+        <img src={fry} alt="loading..." style={{ paddingTop: '30px', paddingBottom: '30px', display: 'block', marginLeft:'auto', marginRight: 'auto'}} />
+        <Typography className={classes.pos}>
+          Created by Nigel, last edited on 11/27/2020 by Mary. 
+        </Typography>
+        <Typography> Similar to... <br></br>
+        <Link href = "#" onClick={preventDefault} color="blue"> Suspicous </Link>,
+        <Link href = "#" onClick={preventDefault} color="blue"> Scary </Link>
+        </Typography>
+        
+      </CardContent>
+      <CardActions style={{marginLeft: '15px',  marginBottom: '10px'}}>
+              <Button size="small">Discover 'Sus'</Button>
               </CardActions>
-          </Card>
+    </Card>
+    </ThemeProvider>
    
           {/*2nd Card*/}
-        <Card className={classes.root} variant="outlined" style={{marginBottom: '20px', borderRadius: '40px'}}>
-            <CardContent style={{marginLeft: '15px', marginTop: '10px'}}>
-              <Typography variant="h2" component="h2">
-                 'Sus'
-               </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                  adjective
-              </Typography>
-               <Typography variant="body1" fontSize component="p">
-               used to describe someone that is acting suspiciously. 
-                <br />
-                  {'Made popular by the videogame "Among Us" .'}
-               </Typography>
-               <br></br>
-               <br></br>
-               <Typography variant="body1" fontSize component="p">
-                    Also see: fishy, whack
-              </Typography>
-               <img src={sus} alt="loading..." style={{ minWidth: '380px', maxWidth: '380px', minHeight: '273px', maxHeight: '273px', paddingTop: '30px', paddingBottom: '30px', display: 'block', marginLeft:'auto', marginRight: 'auto'}} />
-               <Typography className={classes.pos} color="textSecondary">
-                      Created by Mary, last updated on 10/7/2020 by Keshia.
-              </Typography>
-         </CardContent>
+          <ThemeProvider theme={theme}>
+    <Card className={classes.root} variant="outlined" id="cardstyle" style={{marginBottom: '20px', borderRadius: '40px'}}>
+      <CardContent>
+        <Typography className={classes.title} variant="h5" component="h1">
+          'Sus'
+        </Typography>
+        <Typography className={classes.pos} color="textSecondary">
+          adjective
+        </Typography>
+        <Typography className={classes.pos} style = {{color: "blue"}}>
+          Gamer-Lingo
+        </Typography>
+        <Typography variant="body2" component="h2">
+          Short for suspicous.
+          <br />
+          {'"That player is so Sus"'}
+        </Typography>
+        <br />
+        <Typography component="href">
+          {'Suspcious, oddball, weird.'}
+        </Typography>
+        <img src={fry} alt="loading..." style={{ paddingTop: '30px', paddingBottom: '30px', display: 'block', marginLeft:'auto', marginRight: 'auto'}} />
+        <Typography className={classes.pos}>
+          Created by Nigel, last edited on 11/27/2020 by Mary. 
+        </Typography>
+        <Typography> Similar to... <br></br>
+        <Link href = "#" onClick={preventDefault} color="blue"> Suspicous </Link>,
+        <Link href = "#" onClick={preventDefault} color="blue"> Scary </Link>
+        </Typography>
+        
+      </CardContent>
       <CardActions style={{marginLeft: '15px',  marginBottom: '10px'}}>
-        <Button size="small">Discover 'Sus'</Button>
-      </CardActions>
+              <Button size="small">Discover 'Sus'</Button>
+              </CardActions>
     </Card>
+    </ThemeProvider>
 
     {/*3rd Card*/}
-    <Card className={classes.root} variant="outlined" style={{marginBottom: '20px', borderRadius: '40px'}}>
-            <CardContent style={{marginLeft: '15px', marginTop: '10px'}}>
-              <Typography variant="h2" component="h2">
-                   'Bet'
-               </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                  Verb
-              </Typography>
-               <Typography variant="body1" fontSize component="p">
-               used to confirm participation in a social event, 
-                <br />
-                  {'like a meetup.'}
-               </Typography>
-               <br></br>
-               <br></br>
-               <Typography variant="body1" fontSize component="p">
-                   Also see: okay, fosho
-              </Typography>
-               <img src={bet} alt="loading..." style={{ minWidth: '380px', maxWidth: '380px', minHeight: '273px', maxHeight: '273px', paddingTop: '30px', paddingBottom: '30px', display: 'block', marginLeft:'auto', marginRight: 'auto'}} />
-               <Typography className={classes.pos} color="textSecondary">
-                        Created by Rui, last updated on 10/5/2020 by Nigel.
-              </Typography>
-         </CardContent>
+    <ThemeProvider theme={theme}>
+    <Card className={classes.root} variant="outlined" id="cardstyle" style={{marginBottom: '20px', borderRadius: '40px'}}>
+      <CardContent>
+        <Typography className={classes.title} variant="h5" component="h1">
+          'Sus'
+        </Typography>
+        <Typography className={classes.pos} color="textSecondary">
+          adjective
+        </Typography>
+        <Typography className={classes.pos} style = {{color: "blue"}}>
+          Gamer-Lingo
+        </Typography>
+        <Typography variant="body2" component="h2">
+          Short for suspicous.
+          <br />
+          {'"That player is so Sus"'}
+        </Typography>
+        <br />
+        <Typography component="href">
+          {'Suspcious, oddball, weird.'}
+        </Typography>
+        <img src={fry} alt="loading..." style={{ paddingTop: '30px', paddingBottom: '30px', display: 'block', marginLeft:'auto', marginRight: 'auto'}} />
+        <Typography className={classes.pos}>
+          Created by Nigel, last edited on 11/27/2020 by Mary. 
+        </Typography>
+        <Typography> Similar to... <br></br>
+        <Link href = "#" onClick={preventDefault} color="blue"> Suspicous </Link>,
+        <Link href = "#" onClick={preventDefault} color="blue"> Scary </Link>
+        </Typography>
+        
+      </CardContent>
       <CardActions style={{marginLeft: '15px',  marginBottom: '10px'}}>
-        <Button size="small">Discover 'Bet'</Button>
+         <Button size="small">Discover 'Sus'</Button>
       </CardActions>
     </Card>
+    </ThemeProvider>
     
     </div>
             <Sidebar
