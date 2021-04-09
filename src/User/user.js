@@ -7,8 +7,10 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import fry from "./fry.gif"
-
+import Footer from '../Landing/Footer';
+import { Grid } from "@material-ui/core";
 import "./card.css"
+
 import { yellow } from "@material-ui/core/colors";
 const useStyles = makeStyles({
   root: {
@@ -44,6 +46,7 @@ export default function SimpleCard() {
   return (
     
     <ThemeProvider theme={theme}>
+      <Grid>
        <Typography variant="h2" align="center" component="h1" gutterBottom style={{padding: "1%", fontFamily: "Playfair Display Regular"}}>
           Your Posts
           </Typography>
@@ -76,6 +79,10 @@ export default function SimpleCard() {
         <Button size="small" >Delete</Button>
       </CardActions>
     </Card>
+    <Footer description="Created by Mary, Rui, and Nigel. Always grateful for your guidance, Keshia!">
+                
+    </Footer>
+    </Grid>
     </ThemeProvider>
   );
 }

@@ -9,6 +9,9 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import fry from './fry.gif';
 import Link from '@material-ui/core/Link';
 import "./card.css"
+import { Grid } from "@material-ui/core";
+import Footer from '../Landing/Footer';
+
 const useStyles = makeStyles({
   root: {
     minWidth: 100,
@@ -42,6 +45,7 @@ export default function SimpleCard() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Grid>
     <Card className={classes.root} variant="outlined" id="cardstyle">
       <CardContent>
         <Typography className={classes.title} variant="h5" component="h1">
@@ -75,6 +79,10 @@ export default function SimpleCard() {
       <CardActions>
       </CardActions>
     </Card>
+    <Footer description="Created by Mary, Rui, and Nigel. Always grateful for your guidance, Keshia!">
+                
+    </Footer>
+    </Grid>
     </ThemeProvider>
   );
 }

@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import "./card.css"
 import { Form, Field } from 'react-final-form';
 import { TextField, Select } from 'final-form-material-ui';
+//import { GiphyFetch } from '@giphy/js-fetch-api'
+import Footer from '../Landing/Footer';
+import giphyapp from './giphyapp.js';
+// use @giphy/js-fetch-api to fetch gifs, instantiate with your api key
+
 
 import {
   Typography,
@@ -11,10 +16,11 @@ import {
   Button,
   CssBaseline,
   MenuItem,
+  Container,
   
 } from '@material-ui/core';
 // Picker
-
+//const gf = new GiphyFetch(UhFUfdL0oZHHh20DVt0ztFH6GbBYnZov);
 
 
 const onSubmit = async values => {
@@ -124,12 +130,37 @@ export default function createWord(){
                         <MenuItem value="Other">Other</MenuItem>
                       </Field>
                     </Grid>
-                      <Grid item xs={6}>
+                    /*Giphy*/
+                    <Grid tem xs={24}> 
+                    <Field
+                        fullWidth
+                        name="giphyQuery"
+                        component={TextField}
+                        type="text"
+                        label="Search for Gifs..."
+                      />
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                        name="searchGifs"
+                        //disabled={submitting}
+                        onClick={submitting}
+                      >
+                        Search
+                      </Button>
+                      <Container>
+                        
+                      </Container>
+                    </Grid>
+                      <Grid item xs={24}>
                         
                       </Grid>
-
+                      
+                      <Typography> Or, attach your own media.</Typography>
                       <input type='file' id="single" onChange ={submitting}></input>
                     <Grid item style={{ marginTop: 16 }}>
+
                       <Button
                         type="button"
                         variant="contained"
@@ -150,9 +181,13 @@ export default function createWord(){
                       </Button>
                     </Grid>
                   </Grid>
+                  <Footer description="Created by Mary, Rui, and Nigel. Always grateful for your guidance, Keshia!">
+                
+                </Footer>
                 </Paper>
                 <pre>{JSON.stringify(values, 0, 2)}</pre>
               </form>
+
             )}
           />
         </div>
