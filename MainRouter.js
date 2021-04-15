@@ -16,6 +16,7 @@ import SearchAppBar from './Core/search'
 import Landing from './Landing/Landing'
 import wordBattles from './WordBattles/wordBattles'
 import categories from './Post/categories'
+import search from './Post/searchResults'
 const MainRouter = () => {
     
     return (<div>
@@ -36,6 +37,7 @@ const MainRouter = () => {
         <Route exact path="/wordbattles" component={wordBattles}/>
         <Route exact path="/categories" component={categories}/>
         <Route exact path="/underConstruction" component={underConstruction}/>
+        <Route exact path="/searchResults" component={search}/>
       </Switch>
 
     </div>)

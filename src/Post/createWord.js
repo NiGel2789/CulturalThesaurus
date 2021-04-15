@@ -5,7 +5,7 @@ import { Form, Field } from 'react-final-form';
 import { TextField, Select } from 'final-form-material-ui';
 //import { GiphyFetch } from '@giphy/js-fetch-api'
 import Footer from '../Landing/Footer';
-import giphyapp from './giphyapp.js';
+import handleClick from './giphyapp.js';
 // use @giphy/js-fetch-api to fetch gifs, instantiate with your api key
 
 
@@ -19,8 +19,7 @@ import {
   Container,
   
 } from '@material-ui/core';
-// Picker
-//const gf = new GiphyFetch(UhFUfdL0oZHHh20DVt0ztFH6GbBYnZov);
+
 
 
 const onSubmit = async values => {
@@ -45,7 +44,7 @@ const validate = values => {
 export default function createWord(){
 
     return (
-        <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
+        <div style={{ padding: 16, margin: 'auto', maxWidth: 600, borderRadius: "1px" }}>
           <CssBaseline />
           <Typography variant="h2" align="center" component="h1" gutterBottom style={{padding: "1%", fontFamily: "Playfair Display Regular"}}>
            Submit a Word
@@ -130,26 +129,28 @@ export default function createWord(){
                         <MenuItem value="Other">Other</MenuItem>
                       </Field>
                     </Grid>
-                    /*Giphy*/
+                 
                     <Grid tem xs={24}> 
                     <Field
                         fullWidth
-                        name="giphyQuery"
+                        class="giphyQuery"
                         component={TextField}
                         type="text"
                         label="Search for Gifs..."
+                        name="giphyInput"
                       />
+                      <script src="./giphyapp.js"> </script>
                       <Button
                         variant="contained"
                         color="primary"
                         type="submit"
-                        name="searchGifs"
+                        class="searchGifs"
                         //disabled={submitting}
-                        onClick={submitting}
+                        onClick={handleClick}
                       >
                         Search
                       </Button>
-                      <Container>
+                      <Container class="giphycontainer">
                         
                       </Container>
                     </Grid>
