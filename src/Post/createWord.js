@@ -5,7 +5,7 @@ import { Form, Field } from 'react-final-form';
 import { TextField, Select } from 'final-form-material-ui';
 //import { GiphyFetch } from '@giphy/js-fetch-api'
 import Footer from '../Landing/Footer';
-import handleClick from './giphyapp.js';
+//import handleClick from './giphyapp.js';
 // import { GiphyFetch } from "@giphy/js-fetch-api";
 import ReactGiphySearchbox from "react-giphy-searchbox";
 // use @giphy/js-fetch-api to fetch gifs, instantiate with your api key
