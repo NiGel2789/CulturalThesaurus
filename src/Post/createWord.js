@@ -6,6 +6,8 @@ import { TextField, Select } from 'final-form-material-ui';
 //import { GiphyFetch } from '@giphy/js-fetch-api'
 import Footer from '../Landing/Footer';
 import handleClick from './giphyapp.js';
+import { GiphyFetch } from "@giphy/js-fetch-api";
+import ReactGiphySearchbox from "react-giphy-searchbox";
 // use @giphy/js-fetch-api to fetch gifs, instantiate with your api key
 
 
@@ -19,6 +21,7 @@ import {
   Container,
   
 } from '@material-ui/core';
+import { Gif } from '@material-ui/icons';
 
 
 
@@ -131,36 +134,36 @@ export default function createWord(){
                     </Grid>
                  
                     <Grid tem xs={24}> 
-                    <Field
-                        fullWidth
-                        class="giphyQuery"
-                        component={TextField}
-                        type="text"
-                        label="Search for Gifs..."
-                        name="giphyInput"
-                      />
-                      <script src="./giphyapp.js"> </script>
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        type="submit"
-                        class="searchGifs"
-                        //disabled={submitting}
-                        onClick={handleClick}
-                      >
-                        Search
-                      </Button>
-                      <Container class="giphycontainer">
-                        
-                      </Container>
+                
+                      <div className="searchboxWrapper" style={{marginLeft: '25%'}}  >
+                        <ReactGiphySearchbox
+                          apiKey="UhFUfdL0oZHHh20DVt0ztFH6GbBYnZov"
+                          onSelect={(item) => console.log(item)}
+                          masonryConfig={[
+                            { columns: 2, imageWidth: 200, gutter: 5 },
+                            { mq: "700px", columns: 3, imageWidth: 120, gutter: 5 }
+                          ]}
+                        />
+                      </div>
+                      <footer>
+                        <a
+                          href="https://github.com/sergiop/react-giphy-searchbox"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                        </a>
+                      </footer>
                     </Grid>
                       <Grid item xs={24}>
-                        
+                        <Typography>Selected Gif:</Typography>
+                        <div> 
+                          <Gif gif={GiphyFetch(item)}> </Gif>
+                        </div>
                       </Grid>
-                      
-                      <Typography> Or, attach your own media.</Typography>
-                      <input type='file' id="single" onChange ={submitting}></input>
-                    <Grid item style={{ marginTop: 16 }}>
+                     
+                      <Typography style ={{marginTop:'10%', fontStyle:'bold'}}> Or, attach your own media:</Typography>
+                      <input type='file' id="single" onChange ={submitting} style ={{marginTop:'8%'}}></input>
+                    <Grid item style={{ marginTop: 16}}>
 
                       <Button
                         type="button"

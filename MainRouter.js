@@ -17,6 +17,7 @@ import Landing from './Landing/Landing'
 import wordBattles from './WordBattles/wordBattles'
 import categories from './Post/categories'
 import search from './Post/searchResults'
+import giphysearch from './Post/giphysearch'
 const MainRouter = () => {
     
     return (<div>
@@ -38,6 +39,7 @@ const MainRouter = () => {
         <Route exact path="/categories" component={categories}/>
         <Route exact path="/underConstruction" component={underConstruction}/>
         <Route exact path="/searchResults" component={search}/>
+        <Route exact path="/giphysearch" component={giphysearch}/>
       </Switch>
 
     </div>)

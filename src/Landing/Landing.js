@@ -19,9 +19,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography'
-import lit from './lit.gif';
-import sus from './sus.gif';
-import bet from './bet.gif';
+
+import "./landing.css"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 100,
     maxWidth: 1000,
     margin: "auto",
-    marginTop: "20px"
+    marginTop: "20px",
+    fontFamily: "Playfair Display Bold', 'Playfair Display Regular', 'Playfair Display', sans-serif"
     
   }
 }));
@@ -76,6 +76,7 @@ export default function Blog() {
   const classes = useStyles();
   const preventDefault = (event) => event.preventDefault();
   return (
+    
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg" style = {{fontFamily: "Playfair Display Regular"}}>
