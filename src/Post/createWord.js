@@ -6,7 +6,7 @@ import { TextField, Select } from 'final-form-material-ui';
 //import { GiphyFetch } from '@giphy/js-fetch-api'
 import Footer from '../Landing/Footer';
 import handleClick from './giphyapp.js';
-import { GiphyFetch } from "@giphy/js-fetch-api";
+// import { GiphyFetch } from "@giphy/js-fetch-api";
 import ReactGiphySearchbox from "react-giphy-searchbox";
 // use @giphy/js-fetch-api to fetch gifs, instantiate with your api key
 
@@ -157,7 +157,7 @@ export default function createWord(){
                       <Grid item xs={24}>
                         <Typography>Selected Gif:</Typography>
                         <div> 
-                          <Gif gif={GiphyFetch(item)}> </Gif>
+                           {/* <Gif gif={GiphyFetch(item)}> </Gif>  */}
                         </div>
                       </Grid>
                      
