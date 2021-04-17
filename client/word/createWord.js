@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactGiphySearchbox from "react-giphy-searchbox";
-import { Form, Field } from 'react-final-form';
-import { TextField, Select } from 'final-form-material-ui';
 import Footer from '../core/Footer';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -25,6 +23,8 @@ import {
   CssBaseline,
   MenuItem,
   Container,
+  Select,
+  TextField,
   
 } from '@material-ui/core';
 
@@ -93,88 +93,93 @@ export default function createWord(){
                   " There are no limits to what you can submit. "
                 </Typography>
 
-                  <Form
-                    onSubmit={onSubmit}
-                    validate={validate}
-                    render={({ handleSubmit, reset, submitting, pristine, values }) => (
-                      <form onSubmit={handleSubmit} noValidate>
-                        <Paper style={{ padding: 16 }}>
-                          <Grid container alignItems="flex-start" spacing={2}>
+                  <form noValidate>
+                    <Paper style={{ padding: 16 }}>
+                      <Grid container alignItems="flex-start" spacing={2}>
 
                     <Grid item xs={12}>
-                      <Field
-                        fullWidth
-                        required
-                        name="Word"
-                        component={TextField}
-                        type="text"
-                        label="Word"
-                      />
+                      <TextField
+                          className={classes.root}
+                          autoComplete="word"
+                          name="Word"
+                          variant="outlined"
+                          required
+                          fullWidth
+                          id="word"
+                          label="Word"
+                          autoFocus
+                        />
                     </Grid>
 
                     <Grid item xs={12}>
-                      <Field
-                        name="synonyms"
-                        fullWidth
-                        required
-                        component={TextField}
-                        type="synonyms"
-                        label="Synonyms"
-                      />
+                        <TextField
+                            className={classes.root}
+                            autoComplete="Synonyms"
+                            name="Synonyms"
+                            variant="outlined"
+                            required
+                            fullWidth
+                            id="synonyms"
+                            label="Synonyms"
+                            autoFocus
+                          />  
                     </Grid>
+
                     <Grid>
                       <Typography>
                         Defintion
                       </Typography>
-                      <br/>
+                      <br></br>
                     </Grid>
                     
-                    <Grid item xs={24}>
-                      <Field
-                        fullWidth
-                        class = "definition"
-                        name="defintion"
-                        component={"textarea"}
-                        multiline
-                        label="Definition"
-                      />
-                    </Grid>
                     <Grid item xs={12}>
-                      <Field
+                      <textarea id="def" name="def">
+                        Definitions here!
+                      </textarea>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <Select
                         fullWidth
                         name="WordType"
-                        component={Select}
                         label="Type of Word"
                         formControlProps={{ fullWidth: true }}
                       >
+                        <MenuItem value="" disabled>
+                           Type of Word
+                        </MenuItem>
                         <MenuItem value="Adjective">Adjective</MenuItem>
                         <MenuItem value="Adverb">Adverb</MenuItem>
                         <MenuItem value="Proverb">Proverb</MenuItem>
                         <MenuItem value="Verb">Verb</MenuItem>
                         <MenuItem value="Noun">Noun</MenuItem>
                         <MenuItem value="Pronoun">Pronoun</MenuItem>
-                      </Field>
+                      </Select>
                     </Grid>
+
                     <Grid item xs={12}>
-                      <Field
+                      <Select
                         fullWidth
                         name="Category"
-                        component={Select}
                         label="Category"
                         formControlProps={{ fullWidth: true }}
+                        value
                       >
+                        <MenuItem value="" disabled>
+                           Category
+                        </MenuItem>
                         <MenuItem value="Slang">Slang</MenuItem>
                         <MenuItem value="Historical">Historical</MenuItem>
                         <MenuItem value="LGBTQ+Term">LGBTQ+ Term</MenuItem>
                         <MenuItem value="ForeignLanguage">Foreign Language</MenuItem>
                         <MenuItem value="Gaming">Gaming</MenuItem>
                         <MenuItem value="Other">Other</MenuItem>
-                      </Field>
+                      </Select>
                     </Grid>
                  
-                    <Grid item xs={24}> 
+                    <Grid item xs={12}> 
                 
-                      <div className="searchboxWrapper" style={{marginLeft: '5%'}}  >
+                      <div className="searchboxWrapper"   >
                         <ReactGiphySearchbox
                           apiKey="UhFUfdL0oZHHh20DVt0ztFH6GbBYnZov"
                           onSelect={(item) => console.log(item)}
@@ -192,14 +197,13 @@ export default function createWord(){
                         >
                         </a>
                       </footer>
-                    </Grid>                    
+                    </Grid>
+
                     <Grid item style={{ marginTop: 16, marginLeft: '70%'}}>
 
                       <Button
                         type="button"
                         variant="contained"
-                        onClick={reset}
-                        disabled={submitting || pristine}
                       >
                         Reset
                       </Button>
@@ -209,7 +213,6 @@ export default function createWord(){
                         variant="contained"
                         color="secondary"
                         type="submit"
-                        disabled={submitting}
                       >
                         Submit
                       </Button>
@@ -218,9 +221,6 @@ export default function createWord(){
                 
                 </Paper>
               </form>
-
-            )}
-          />
       </Card>
 
 
