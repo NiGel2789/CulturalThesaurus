@@ -178,25 +178,25 @@ export default function createWord(){
                     </Grid>
                  
                     <Grid item xs={12}> 
-                
-                      <div className="searchboxWrapper"   >
-                        <ReactGiphySearchbox
+                      <TextField
+                            className={classes.root}
+                            autoComplete="GiphyLink"
+                            name="GiphyLink"
+                            variant="outlined"
+                            required
+                            fullWidth
+                            id="GiphyLink"
+                            label="Giphy Link"
+                            autoFocus
+                          />  
+                        {/*<ReactGiphySearchbox
                           apiKey="UhFUfdL0oZHHh20DVt0ztFH6GbBYnZov"
                           onSelect={(item) => console.log(item)}
                           masonryConfig={[
                             { columns: 2, imageWidth: 200, gutter: 5 },
                             { mq: "700px", columns: 3, imageWidth: 120, gutter: 5 }
                           ]}
-                        />
-                      </div>
-                      <footer>
-                        <a
-                          href="https://github.com/sergiop/react-giphy-searchbox"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                        </a>
-                      </footer>
+                        />*/}
                     </Grid>
 
                     <Grid item style={{ marginTop: 16, marginLeft: '70%'}}>
