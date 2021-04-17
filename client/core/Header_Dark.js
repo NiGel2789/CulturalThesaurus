@@ -40,10 +40,10 @@ const isActive = (history, path) => {
 };
 
 const sections = [
-  { title: 'Categories', url: '/categories' },
-  { title: 'Random Word', url: '/wordPage' },
+  { title: 'Categories', url: "/categories" },
+  { title: 'Random Word', url: "/wordPage" },
   { title: 'WordBattles', url: '#' },
-  { title: 'About', url: "/about" },
+  { title: 'About', url: "https://culturalthesaurus.com" },
 ];
 
 const classes = () => useStyles();
@@ -98,7 +98,6 @@ const Header = withRouter(({history}) => (
             key={section.title}
             variant="body1"
             to={section.url}
-            className={classes.toolbarLink}
           >
             {section.title}
           </Link>

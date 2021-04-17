@@ -28,13 +28,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const sections = [
-  { title: 'Categories', url: '/categories' },
-  { title: 'Random Word', url: '/wordPage' },
-  { title: 'About', url: '/about' },
-  { title: 'WordBattles', url: '/categories' },
-];
-
 const sidebar = {
   title: 'Shesaurus Stats',
   description:
@@ -61,7 +54,7 @@ export default function Blog() {
       <CssBaseline />
       <div style={{backgroundImage: "url(" + bground + ")"}}>
       <Container maxWidth="lg">
-      <Header title="CulturalThesaurus" sections={sections}/>
+      <Header title="CulturalThesaurus" />
         <main>
         <div  style={{ backgroundImage: "url(" + Welcome + ")",width: '100%',height: '500px', paddingTop: '10px', marginTop: '20px', paddingBottom:'20px', boxShadow: '5px 10px' }}> </div>
           <Grid container spacing={5} className={classes.mainGrid}>

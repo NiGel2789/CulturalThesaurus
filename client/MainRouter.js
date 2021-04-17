@@ -11,6 +11,7 @@ import Menu from './core/Menu'
 import About from './core/About'
 import WordPage from './core/wordPage'
 import Categories from './core/Categories'
+import createWord from './word/createWord'
 
 const MainRouter = () => {
     return (<div>
@@ -23,6 +24,7 @@ const MainRouter = () => {
         <Route path="/about" component={About}/>
         <Route path="/wordPage" component={WordPage}/>
         <Route path="/categories" component={Categories}/>
+        <Route path="/createWord" component={createWord}/>
         <PrivateRoute path="/user/edit/:userId" component={EditProfile}/>
         <Route path="/user/:userId" component={Profile}/>
       </Switch>
