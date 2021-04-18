@@ -52,7 +52,7 @@ export default function Sidebar(props) {
         </Typography>
         <Typography>{contributeDesc}</Typography>
 
-        <a href="/signup"><img src={dwayne} alt="loading..." style={{ minWidth: '202px', maxWidth: '202px', minHeight: '163px', maxHeight: '163px', objectFit: 'cover', marginTop: '10px'}} /> </a>
+        <a href="/createword"><img src={dwayne} alt="loading..." style={{ minWidth: '202px', maxWidth: '202px', minHeight: '163px', maxHeight: '163px', objectFit: 'cover', marginTop: '10px'}} /> </a>
       </Paper>
 
       <WhiteTextTypography variant="h6" gutterBottom className={classes.sidebarSection} style={{textDecoration: "yellow   underline"}}>

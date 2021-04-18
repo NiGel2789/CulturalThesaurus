@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-import ReactGiphySearchbox from "react-giphy-searchbox";
+//import ReactGiphySearchbox from "react-giphy-searchbox";
 import Footer from '../core/Footer';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -12,6 +12,10 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Sidebar from '../core/Sidebar';
+import { GiphyFetch } from "@giphy/js-fetch-api";
+import { Gif } from '@giphy/react-components'
+import { useAsync } from "react-async-hook";
+import Picker from 'react-giphy-component'
 // use @giphy/js-fetch-api to fetch gifs, instantiate with your api key
 
 
@@ -28,8 +32,6 @@ import {
   
 } from '@material-ui/core';
 
-// Picker
-//const gf = new GiphyFetch(UhFUfdL0oZHHh20DVt0ztFH6GbBYnZov);
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -73,6 +75,17 @@ const sidebar = {
 
 export default function createWord(){
   const classes = useStyles();  
+
+  const [values, setValues] = useState({
+    gifID: ''
+  })
+
+  /*
+  const handleChange = gifID => event => {
+    setValues({ ...values, [gifID]: event.target.value })
+    console.log(gifID)
+  }*/
+
     return (
       <React.Fragment>
         <CssBaseline />
@@ -108,6 +121,7 @@ export default function createWord(){
                           id="word"
                           label="Word"
                           autoFocus
+                          color="secondary"
                         />
                     </Grid>
 
@@ -122,20 +136,29 @@ export default function createWord(){
                             id="synonyms"
                             label="Synonyms"
                             autoFocus
+                            color="secondary"
                           />  
-                    </Grid>
 
-                    <Grid>
-                      <Typography>
-                        Defintion
-                      </Typography>
-                      <br></br>
+                          <br></br>
+
+                          <Typography variant="body2" marginTop="5px">
+                        Example (separated by commas): wow, amazing, cool
+                           </Typography>
                     </Grid>
                     
                     <Grid item xs={12}>
-                      <textarea id="def" name="def">
-                        Definitions here!
-                      </textarea>
+                    <TextField
+                            className={classes.root}
+                            autoComplete="Definitions"
+                            name="Definitions"
+                            variant="outlined"
+                            required
+                            fullWidth
+                            id="definitions"
+                            label="Definitions"
+                            autoFocus
+                            color="secondary"
+                          />  
                     </Grid>
 
                     <Grid item xs={12}>
@@ -144,6 +167,9 @@ export default function createWord(){
                         name="WordType"
                         label="Type of Word"
                         formControlProps={{ fullWidth: true }}
+                        variant="outlined"
+                        color="secondary"
+                        required
                       >
                         <MenuItem value="" disabled>
                            Type of Word
@@ -163,7 +189,9 @@ export default function createWord(){
                         name="Category"
                         label="Category"
                         formControlProps={{ fullWidth: true }}
-                        value
+                        variant="outlined"
+                        color="secondary"
+                        required
                       >
                         <MenuItem value="" disabled>
                            Category
@@ -180,16 +208,26 @@ export default function createWord(){
                     <Grid item xs={12}> 
                       <TextField
                             className={classes.root}
-                            autoComplete="GiphyLink"
-                            name="GiphyLink"
+                            autoComplete="gifID"
+                            name="gifID"
                             variant="outlined"
                             required
                             fullWidth
-                            id="GiphyLink"
+                            id="gifID"
                             label="Giphy Link"
                             autoFocus
+                            value={values.gifID}
+                            color="secondary"
                           />  
-                        {/*<ReactGiphySearchbox
+
+                      <br></br>
+                      <Typography variant="body2" marginTop="5px">
+                        Example: https://media.giphy.com/media/26ufcQNzm5YwuNxja/giphy.gif
+                      </Typography>
+
+                        {/*<Picker onSelected={(item) => console.log(JSON.parse(JSON.stringify(item)))}/>
+
+                        {<ReactGiphySearchbox
                           apiKey="UhFUfdL0oZHHh20DVt0ztFH6GbBYnZov"
                           onSelect={(item) => console.log(item)}
                           masonryConfig={[
@@ -200,7 +238,6 @@ export default function createWord(){
                     </Grid>
 
                     <Grid item style={{ marginTop: 16, marginLeft: '70%'}}>
-
                       <Button
                         type="button"
                         variant="contained"
