@@ -1,1 +1,1 @@
-window.location.href = 'https://culturalthesaurus.com/'; 
+// empty for now

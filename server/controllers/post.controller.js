@@ -64,7 +64,7 @@ const listNewsFeed = async (req, res) => {
   let following = req.profile.following
   following.push(req.profile._id)
   try{
-    let posts = await Post.find({postedBy: { $in : req.profile.following } })
+    let posts = await Post.find({text:"2word"})
                           .populate('comments.postedBy', '_id name')
                           .populate('postedBy', '_id name')
                           .sort('-created')

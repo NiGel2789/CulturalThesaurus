@@ -60,6 +60,9 @@ export default function NewPost (props){
   const classes = useStyles()
   const [values, setValues] = useState({
     text: '',
+    definition:'',
+    partOfSpeech:'',
+    category:'',
     photo: '',
     error: '',
     user: {}
@@ -71,7 +74,10 @@ export default function NewPost (props){
   const clickPost = () => {
     let postData = new FormData()
     postData.append('text', values.text)
+    postData.append('definition', values.definition)
     postData.append('photo', values.photo)
+    postData.append('partOfSpeech', values.partOfSpeech)
+    postData.append('category', values.category)
     create({
       userId: jwt.user._id
     }, {
@@ -80,7 +86,7 @@ export default function NewPost (props){
       if (data.error) {
         setValues({...values, error: data.error})
       } else {
-        setValues({...values, text:'', photo: ''})
+        setValues({...values, text:'', definition:'', partOfSpeech: '', category:'' , photo: ''})
         props.addUpdate(data)
       }
     })
@@ -93,7 +99,7 @@ export default function NewPost (props){
   }
   const photoURL = values.user._id ?'/api/users/photo/'+ values.user._id : '/api/users/defaultphoto'
     return (<div className={classes.root}>
-      <Card className={classes.card}>
+      <Card variant="outlined" style={{marginBottom: '20px', borderRadius: '40px', borderWidth: '3px', borderColor: '#fff952'}} sclassName={classes.card}>
       <CardHeader
             avatar={
               <Avatar src={photoURL}/>
@@ -103,7 +109,7 @@ export default function NewPost (props){
           />
       <CardContent className={classes.cardContent}>
         <TextField
-            placeholder="Upload"
+            placeholder="Enter word"
             multiline
             rows="3"
             value={values.text}
@@ -111,6 +117,36 @@ export default function NewPost (props){
             className={classes.textField}
             margin="normal"
         />
+        
+        <TextField
+            placeholder="Enter definition"
+            multiline
+            rows="3"
+            value={values.definition}
+            onChange={handleChange('definition')}
+            className={classes.textField}
+            margin="normal"
+        />
+
+        <TextField
+            placeholder="Enter part of speech"
+            multiline
+            rows="3"
+            value={values.partOfSpeech}
+            onChange={handleChange('partOfSpeech')}
+            className={classes.textField}
+            margin="normal"
+        />
+        <TextField
+            placeholder="Enter category"
+            multiline
+            rows="3"
+            value={values.category}
+            onChange={handleChange('category')}
+            className={classes.textField}
+            margin="normal"
+        />
+        
         
         <input accept="image/*" onChange={handleChange('photo')} className={classes.input} id="icon-button-file" type="file" />
         <label htmlFor="icon-button-file">
@@ -135,4 +171,3 @@ export default function NewPost (props){
 NewPost.propTypes = {
   addUpdate: PropTypes.func.isRequired
 }
-

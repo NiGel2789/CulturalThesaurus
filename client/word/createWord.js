@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 //import ReactGiphySearchbox from "react-giphy-searchbox";
 import Footer from '../core/Footer';
@@ -12,10 +12,10 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Sidebar from '../core/Sidebar';
-import { GiphyFetch } from "@giphy/js-fetch-api";
-import { Gif } from '@giphy/react-components'
-import { useAsync } from "react-async-hook";
-import Picker from 'react-giphy-component'
+import {create} from '../post/api-post';
+// import Picker from 'react-giphy-component'
+import PropTypes from 'prop-types'
+import auth from './../auth/auth-helper'
 // use @giphy/js-fetch-api to fetch gifs, instantiate with your api key
 
 
@@ -39,23 +39,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const onSubmit = async values => {
-};
-
-const validate = values => {
-  const errors = {};
-  if (!values.firstName) {
-    errors.firstName = 'Required';
-  }
-  if (!values.lastName) {
-    errors.lastName = 'Required';
-  }
-  if (!values.email) {
-    errors.email = 'Required';
-  }
-  return errors;
-};
-
 const sidebar = {
   title: 'Shesaurus Stats',
   description:
@@ -77,14 +60,47 @@ export default function createWord(){
   const classes = useStyles();  
 
   const [values, setValues] = useState({
-    gifID: ''
+    text: '',
+    syn: '',
+    definition: '',
+    partOfSpeech: '',
+    category: '',
+    photoLink: '',
+    error: '',
+    user: {}
   })
 
-  /*
-  const handleChange = gifID => event => {
-    setValues({ ...values, [gifID]: event.target.value })
-    console.log(gifID)
-  }*/
+  const jwt = auth.isAuthenticated()
+  useEffect(() => {
+    setValues({...values, user: auth.isAuthenticated().user})
+  }, [])
+  const clickSubmit = () => {
+    let postData = new FormData()
+    postData.append('text', values.text)
+    postData.append('syn', values.syn)
+    postData.append('definition', values.definition)
+    postData.append('photoLink', values.photoLink)
+    postData.append('partOfSpeech', values.partOfSpeech)
+    postData.append('category', values.category)
+    create({
+      userId: jwt.user._id
+    }, {
+      t: jwt.token
+    }, postData).then((data) => {
+      if (data.error) {
+        setValues({...values, error: data.error})
+      } else {
+        setValues({...values, text:'', definition:'', syn: '', partOfSpeech: '', category:'' , photoLink: ''})
+        props.addUpdate(data)
+      }
+    })
+  }
+  const handleChange = name => event => {
+    const value = name === 'photo'
+      ? event.target.files[0]
+      : event.target.value
+    setValues({...values, [name]: value })
+  }
 
     return (
       <React.Fragment>
@@ -122,6 +138,7 @@ export default function createWord(){
                           label="Word"
                           autoFocus
                           color="secondary"
+                          onChange={handleChange('text')}
                         />
                     </Grid>
 
@@ -137,6 +154,7 @@ export default function createWord(){
                             label="Synonyms"
                             autoFocus
                             color="secondary"
+                            onChange={handleChange('syn')}
                           />  
 
                           <br></br>
@@ -158,6 +176,7 @@ export default function createWord(){
                             label="Definitions"
                             autoFocus
                             color="secondary"
+                            onChange={handleChange('definition')}
                           />  
                     </Grid>
 
@@ -170,6 +189,7 @@ export default function createWord(){
                         variant="outlined"
                         color="secondary"
                         required
+                        onChange={handleChange('partOfSpeech')}
                       >
                         <MenuItem value="" disabled>
                            Type of Word
@@ -192,6 +212,7 @@ export default function createWord(){
                         variant="outlined"
                         color="secondary"
                         required
+                        onChange={handleChange('category')}
                       >
                         <MenuItem value="" disabled>
                            Category
@@ -218,6 +239,7 @@ export default function createWord(){
                             autoFocus
                             value={values.gifID}
                             color="secondary"
+                            onChange={handleChange('photoLink')}
                           />  
 
                       <br></br>
@@ -250,6 +272,9 @@ export default function createWord(){
                         variant="contained"
                         color="secondary"
                         type="submit"
+                        disabled={values.text === ''}
+                        onClick={clickSubmit} 
+                        className={classes.submit}
                       >
                         Submit
                       </Button>
@@ -277,4 +302,8 @@ export default function createWord(){
       </div>
     </React.Fragment>
   );
+}
+
+createWord.propTypes = {
+  addUpdate: PropTypes.func.isRequired
 }

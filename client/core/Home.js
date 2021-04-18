@@ -90,7 +90,9 @@ export default function Blog() {
               </Typography>
              </CardContent>
              <CardActions style={{marginLeft: '15px',  marginBottom: '10px'}}>
-              <Button size="small">Discover 'Lit'</Button>
+               <Link to="/wordPage/Lit">
+                <Button size="small">Discover 'Lit'</Button>
+              </Link>
               </CardActions>
           </Card>
    
