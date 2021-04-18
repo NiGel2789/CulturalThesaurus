@@ -14,7 +14,18 @@ const config = {
     },
     externals: [nodeExternals()],
     module: {
-        rules: [
+        rules: [{
+            test: /\.ts(x?)$/,
+            exclude: /node_modules/,
+            use: [
+              {
+                loader: 'babel-loader',
+              },
+              {
+                loader: 'ts-loader'
+              }
+            ]
+          },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -25,7 +36,10 @@ const config = {
                 use: 'file-loader'
             }
         ]
-    }
+    },
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js']
+    },
 }
 
 module.exports = config

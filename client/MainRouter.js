@@ -12,6 +12,7 @@ import About from './core/About'
 import WordPage from './core/wordPage'
 import Categories from './core/Categories'
 import createWord from './word/createWord'
+import search from './core/SearchResults'
 
 const MainRouter = () => {
     return (<div>
@@ -27,6 +28,7 @@ const MainRouter = () => {
         <Route path="/createWord" component={createWord}/>
         <PrivateRoute path="/user/edit/:userId" component={EditProfile}/>
         <Route path="/user/:userId" component={Profile}/>
+        <Route path="/search" component={search}/> 
       </Switch>
     </div>)
 }

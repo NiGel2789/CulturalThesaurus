@@ -43,7 +43,7 @@ const sections = [
   { title: 'Categories', url: "/categories" },
   { title: 'Random Word', url: "/wordPage" },
   { title: 'WordBattles', url: '#' },
-  { title: 'About', url: "https://culturalthesaurus.com" },
+  { title: 'About', url: "/about" },
 ];
 
 const classes = () => useStyles();

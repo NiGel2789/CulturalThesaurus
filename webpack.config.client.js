@@ -16,7 +16,18 @@ const config = {
         publicPath: '/dist/'
     },
     module: {
-        rules: [
+        rules: [{
+            test: /\.ts(x?)$/,
+            exclude: /node_modules/,
+            use: [
+              {
+                loader: 'babel-loader',
+              },
+              {
+                loader: 'ts-loader'
+              }
+            ]
+          },
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
