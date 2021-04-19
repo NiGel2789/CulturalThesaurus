@@ -37,12 +37,35 @@ const postByID = async (req, res, next, id) => {
         error: "Post not found"
       })
     req.post = post
+    console.log(post)
     next()
   }catch(err){
     return res.status('400').json({
       error: "Could not retrieve use post"
     })
+    }
   }
+
+const list = async (req, res) => {
+  const query = {}
+  if (req.query.search)
+    query.name = {'$regex': req.query.search, '$options': "i"}
+  if (req.query.category)
+    query.category = req.query.category
+    try {
+      let posts = await Post.find(query)
+                            .populate('_id text definition syn photoLink category partofSpeech')
+                            .exec()
+      res.json(posts)
+    } catch (err) {
+      return res.status(400).json({
+        error: errorHandler.getErrorMessage(err)
+      })
+    }
+}
+
+const read = (req, res) => {
+  return res.json(req.post)
 }
 
 const listByUser = async (req, res) => {
@@ -167,5 +190,7 @@ export default {
   unlike,
   comment,
   uncomment,
-  isPoster
+  isPoster,
+  list,
+  read
 }

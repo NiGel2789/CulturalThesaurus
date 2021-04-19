@@ -23,13 +23,15 @@ const MainRouter = () => {
         <Route path="/signup" component={Signup}/>
         <Route path="/signin" component={Signin}/>
         <Route path="/about" component={About}/>
-        <Route path="/wordPage" component={WordPage}/>
+
+        <Route path="/wordPage/:postId" component={WordPage}/>
+
         <Route path="/categories" component={Categories}/>
         <Route path="/search" component={SearchResults}/> 
         <Route path="/createWord" component={createWord}/>
         <PrivateRoute path="/user/edit/:userId" component={EditProfile}/>
         <Route path="/user/:userId" component={Profile}/>
-        
+    
       </Switch>
     </div>)
 }

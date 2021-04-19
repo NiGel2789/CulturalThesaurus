@@ -27,8 +27,14 @@ router.route('/api/posts/comment')
 router.route('/api/posts/uncomment')
   .put(authCtrl.requireSignin, postCtrl.uncomment)
 
-router.route('/api/posts/:postId')
+router.route('/api/posts/delete/:postId')
   .delete(authCtrl.requireSignin, postCtrl.isPoster, postCtrl.remove)
+
+router.route('/api/posts')
+  .get(postCtrl.list)
+
+router.route('/api/posts/:postId')
+  .get(postCtrl.read)
 
 router.param('userId', userCtrl.userByID)
 router.param('postId', postCtrl.postByID)

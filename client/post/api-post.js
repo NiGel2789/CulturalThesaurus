@@ -1,3 +1,5 @@
+import queryString from 'query-string'
+
 const create = async (params, credentials, post) => {
   try {
     let response = await fetch('/api/posts/new/'+ params.userId, {
@@ -23,6 +25,19 @@ const listByUser = async (params, credentials) => {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + credentials.t
       }
+    })
+    return await response.json()
+  } catch(err) {
+    console.log(err)
+  }
+}
+
+const getPost = async (params, signal) => {
+  const query = queryString.stringify(params)
+  try {
+    let response = await fetch('/api/posts?'+ query, {
+      method: 'GET',
+      signal: signal
     })
     return await response.json()
   } catch(err) {
@@ -117,6 +132,21 @@ const comment = async (params, credentials, postId, comment) => {
   }
 }
 
+const read = async (params, signal) => {
+  try {
+    let response = await fetch('/api/posts/' + params.postId, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      signal: signal
+    })
+    return response.json()
+  } catch(err) {
+    console.log(err)
+  }
+}
 
 const uncomment = async (params, credentials, postId, comment) => {
   try {
@@ -144,5 +174,7 @@ export {
   like,
   unlike,
   comment,
-  uncomment
+  uncomment,
+  getPost,
+  read
 }

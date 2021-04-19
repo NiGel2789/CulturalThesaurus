@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
@@ -8,16 +8,10 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
-import Welcome from '../assets/images/welcomeBanner.jpg';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography'
-import lit from '../assets/images/lit.gif';
 import Header from './Header_Dark';
 import bground from '../assets/images/ctBground.png';
-import Link from '@material-ui/core/Link';
+import WordCard from './WordCard';
+import {read} from '../post/api-post.js'; 
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,9 +37,29 @@ const sidebar = {
   ],
 };
 
-export default function wordPage() {
+export default function wordPage({ match }) {
   const classes = useStyles();  
   const preventDefault = (event) => event.preventDefault();
+
+  const [post, setPost] = useState([])
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+      const abortController = new AbortController()
+      const signal = abortController.signal
+  
+      read({
+        postId: match.params.postId}, signal).then((data) => {
+        if (data.error) {
+          setError(data.error)
+        } else {
+          setPost(data)
+        }
+      })
+    return function cleanup(){
+      abortController.abort()
+    }
+  }, [match.params.postId])
 
   return (
     <React.Fragment>
@@ -57,36 +71,7 @@ export default function wordPage() {
           <Grid container spacing={5} className={classes.mainGrid}>
             <div style={{width: '847px'}}>
 
-          <Card className={classes.root} variant="outlined" style={{marginBottom: '20px', borderRadius: '40px', borderWidth: '3px', borderColor: '#fff952'}}>
-            <CardContent style={{marginLeft: '15px', marginTop: '10px'}}>
-              <Typography variant="h2" component="h2" style={{ fontWeight: 600 }}>
-                 'Lit'
-               </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                  adjective
-              </Typography>
-               <Typography variant="body1" fontSize component="p">
-               used to describe something that is "exciting or 
-                <br />
-                  {'excellent."'}
-               </Typography>
-               <br></br>
-               <br></br>
-               <Typography variant="body1" fontSize component="p">
-                  Also see: 
-                  <Link href = "#" onClick={preventDefault} color="blue"> dank </Link>,
-                 <Link href = "#" onClick={preventDefault} color="blue"> ill </Link>,
-                 <Link href = "#" onClick={preventDefault} color="blue"> amazeballs </Link>
-              </Typography>
-               <img src={lit} alt="loading..." style={{ paddingTop: '30px', paddingBottom: '30px', display: 'block', marginLeft:'auto', marginRight: 'auto'}} />
-               <Typography className={classes.pos} color="textSecondary">
-                  Created by Nigel, last edited on 11/27/2020 by Mary. 
-              </Typography>
-             </CardContent>
-             <CardActions style={{marginLeft: '15px',  marginBottom: '10px'}}>
-              <Button size="small">Discover 'Lit'</Button>
-              </CardActions>
-          </Card>
+          <WordCard word={post}></WordCard>
       
     </div>
             <Sidebar

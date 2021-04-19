@@ -47,7 +47,6 @@ export default function Profile({ match }) {
   })
   const [posts, setPosts] = useState([])
   const jwt = auth.isAuthenticated()
-
   useEffect(() => {
     const abortController = new AbortController()
     const signal = abortController.signal

@@ -8,7 +8,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
-import Welcome from '../assets/images/welcomeBanner.jpg';
+import Welcome from '../assets/images/welcomeBanner.png';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -44,6 +44,20 @@ const sidebar = {
     { name: 'Facebook', icon: FacebookIcon, link: 'https://facebook.com'},
   ],
 };
+
+const search = () => {
+  if(values.search){
+    list({
+      search: values.search || undefined, category: values.category
+    }).then((data) => {
+      if (data.error) {
+        console.log(data.error)
+      } else {
+        setValues({...values, results: data, searched:true})
+      }
+    })
+  }
+}
 
 export default function Blog() {
   const classes = useStyles();  
@@ -90,7 +104,7 @@ export default function Blog() {
               </Typography>
              </CardContent>
              <CardActions style={{marginLeft: '15px',  marginBottom: '10px'}}>
-               <Link to="/wordPage/Lit">
+               <Link href = {"/wordPage/607d24e50d67871d58d6ec22"}>
                 <Button size="small">Discover 'Lit'</Button>
               </Link>
               </CardActions>
@@ -123,7 +137,9 @@ export default function Blog() {
               </Typography>
          </CardContent>
       <CardActions style={{marginLeft: '15px',  marginBottom: '10px'}}>
-        <Button size="small">Discover 'Sus'</Button>
+        <Link href = {"/wordPage/607d254d0d67871d58d6ec23"}>
+          <Button size="small">Discover 'Sus'</Button>
+        </Link>
       </CardActions>
     </Card>
 
@@ -154,7 +170,9 @@ export default function Blog() {
               </Typography>
          </CardContent>
       <CardActions style={{marginLeft: '15px',  marginBottom: '10px'}}>
+      <Link href = {"/wordPage/607d25bb0d67871d58d6ec24"}>
         <Button size="small">Discover 'Bet'</Button>
+        </Link>
       </CardActions>
     </Card>
     
