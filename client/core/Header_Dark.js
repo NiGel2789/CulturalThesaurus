@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button'
 import Logo from '../assets/images/CT_Dark.png';
 import SearchBar from "material-ui-search-bar";
 import auth from './../auth/auth-helper'
-import {Link, withRouter} from 'react-router-dom'
+import {Link, Redirect, withRouter} from 'react-router-dom'
 
 // <Button size="small">Subscribe</Button>
 const useStyles = makeStyles((theme) => ({
@@ -55,6 +55,7 @@ const Header = withRouter(({history}) => (
         <a href="/"><img src={Logo} height={120} width={264}/> 
         </a>
         <SearchBar className={classes.search}
+          onRequestSearch={(searchVal) => history.push('/search/post/' + searchVal)}
           placeholder={"Search the world.."}
           style={{
             margin: '0 auto',

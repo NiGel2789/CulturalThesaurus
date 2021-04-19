@@ -29,7 +29,7 @@ const MainRouter = () => {
         <Route path="/categories" component={Categories}/>
 
         <Route path="/search/cat/:category" component={SearchResults}/>
-        <Route path="/search/post/:postId" component={SearchResults}/>  
+        <Route path="/search/post/:text" component={SearchResults}/>  
 
         <Route path="/createWord" component={createWord}/>
 

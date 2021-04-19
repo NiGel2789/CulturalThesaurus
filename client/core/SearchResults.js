@@ -76,7 +76,8 @@ export default function SearchResults({ match }){
     const signal = abortController.signal
 
     getPost({
-      category: match.params.category}, signal).then((data) => {
+      text: match.params.text || undefined, 
+      category: match.params.category || undefined}, signal).then((data) => {
       if (data.error) {
         setError(data.error)
       } else {
@@ -101,7 +102,7 @@ export default function SearchResults({ match }){
               <Card className={classes.root} variant="outlined" style={{marginBottom: '20px', borderRadius: '40px', borderWidth: '3px', borderColor: '#fff952'}}>
                 <CardContent style={{marginLeft: '15px', marginTop: '10px'}}>
                 <Typography className={classes.title} gutterBottom variant="h3" component="h3" style={{ fontWeight: 600 , textDecoration: "yellow underline"}}>
-                   Search results for {match.params.category}...
+                   Search Results
                   </Typography>
 
             {values.results.map((word, i) => (    
