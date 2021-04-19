@@ -46,15 +46,28 @@ const postByID = async (req, res, next, id) => {
     }
   }
 
-const list = async (req, res) => {
-  const query = {}
-  if (req.query.search)
-    query.name = {'$regex': req.query.search, '$options': "i"}
-  if (req.query.category)
-    query.category = req.query.category
+  const list = async (req, res) => {
+    const query = {}
+     if(req.query.text)
+        query.text = {'$regex': req.query.text, '$options': "i"}
+    if(req.query.category && req.query.category != 'All')
+        query.category =  req.query.category
+    console.log(query)
     try {
-      let posts = await Post.find(query)
-                            .populate('_id text definition syn photoLink category partofSpeech')
+      let posts = await Post.find(query).select('_id text category')
+      res.json(posts)
+    } catch (err) {
+      return res.status(400).json({
+        error: errorHandler.getErrorMessage(err)
+      })
+    }
+  }
+
+/*const listByCat = async (req, res) => {
+  console.log("in List by cat")
+    try {
+      let posts = await Post.find({category: req.query.category})
+                            .populate('_id text')
                             .exec()
       res.json(posts)
     } catch (err) {
@@ -62,7 +75,7 @@ const list = async (req, res) => {
         error: errorHandler.getErrorMessage(err)
       })
     }
-}
+}*/
 
 const read = (req, res) => {
   return res.json(req.post)

@@ -38,5 +38,6 @@ router.route('/api/posts/:postId')
 
 router.param('userId', userCtrl.userByID)
 router.param('postId', postCtrl.postByID)
+//router.param('category', postCtrl.postByID)
 
 export default router

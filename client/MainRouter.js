@@ -27,8 +27,12 @@ const MainRouter = () => {
         <Route path="/wordPage/:postId" component={WordPage}/>
 
         <Route path="/categories" component={Categories}/>
-        <Route path="/search" component={SearchResults}/> 
+
+        <Route path="/search/cat/:category" component={SearchResults}/>
+        <Route path="/search/post/:postId" component={SearchResults}/>  
+
         <Route path="/createWord" component={createWord}/>
+
         <PrivateRoute path="/user/edit/:userId" component={EditProfile}/>
         <Route path="/user/:userId" component={Profile}/>
     

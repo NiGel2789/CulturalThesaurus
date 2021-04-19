@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import ReactGiphySearchbox from "react-giphy-searchbox";
 import Footer from '../core/Footer';
@@ -13,6 +13,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Sidebar from '../core/Sidebar';
 import List from '@material-ui/core/List';
+import {read} from '../post/api-post.js'; 
 // use @giphy/js-fetch-api to fetch gifs, instantiate with your api key
 
 
@@ -30,6 +31,7 @@ import {
 
   
 } from '@material-ui/core';
+import { getPost } from '../post/api-post';
 
 // Picker
 //const gf = new GiphyFetch(UhFUfdL0oZHHh20DVt0ztFH6GbBYnZov);
@@ -59,8 +61,33 @@ const sidebar = {
   ],
 };
 
-export default function SearchResults(){
+export default function SearchResults({ match }){
   const classes = useStyles();  
+  const preventDefault = (event) => event.preventDefault();
+
+  const [values, setValues] = useState({
+    results: [],
+    searched: false
+})
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    const abortController = new AbortController()
+    const signal = abortController.signal
+
+    getPost({
+      category: match.params.category}, signal).then((data) => {
+      if (data.error) {
+        setError(data.error)
+      } else {
+        setValues({...values, results: data, searched:true})
+      }
+    })
+  return function cleanup(){
+    abortController.abort()
+  }
+}, [match.params.postId])
+
     return (
       <React.Fragment>
         <CssBaseline />
@@ -74,26 +101,16 @@ export default function SearchResults(){
               <Card className={classes.root} variant="outlined" style={{marginBottom: '20px', borderRadius: '40px', borderWidth: '3px', borderColor: '#fff952'}}>
                 <CardContent style={{marginLeft: '15px', marginTop: '10px'}}>
                 <Typography className={classes.title} gutterBottom variant="h3" component="h3" style={{ fontWeight: 600 , textDecoration: "yellow underline"}}>
-                   Search results for...
+                   Search results for {match.params.category}...
                   </Typography>
-                  </CardContent>
-               
 
-                  
-                    {/* <Paper style={{ padding: 16 }}>
-                      <List>
-                          <Link style={{color: "black", fontSize: 17}}> American Slang</Link> <br/>
-                          <Link style={{color: "black", fontSize: 17}}> Anime</Link> <br/>
-                          <Link style={{color: "black", fontSize: 17}}> Best of the Best</Link> <br/>
-                          <Link style={{color: "black", fontSize: 17}}> British Slang</Link> <br/>
-                          <Link style={{color: "black", fontSize: 17}}> Creole </Link> <br/>
-                          <Link style={{color: "black", fontSize: 17}}> Creole </Link> <br/>
-                          
-                   
-                      </List>
-                
-                </Paper> */}
-            
+            {values.results.map((word, i) => (    
+              <Link style={{color: "black", fontSize:18}} href={"/wordPage/"+word._id}>
+                  {word.text}
+                  <br></br>
+              </Link>
+            ))}
+        </CardContent>
       </Card>
 
 

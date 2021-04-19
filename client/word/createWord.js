@@ -219,9 +219,13 @@ export default function createWord(){
                         </MenuItem>
                         <MenuItem value="Slang">Slang</MenuItem>
                         <MenuItem value="Historical">Historical</MenuItem>
-                        <MenuItem value="LGBTQ+Term">LGBTQ+ Term</MenuItem>
+                        <MenuItem value="LGBTQ+">LGBTQ+ Term</MenuItem>
                         <MenuItem value="ForeignLanguage">Foreign Language</MenuItem>
                         <MenuItem value="Gaming">Gaming</MenuItem>
+                        <MenuItem value="Anime">Anime</MenuItem>
+                        <MenuItem value="Creole">Creole</MenuItem>
+                        <MenuItem value="BestOfTheBest">Best of the Best</MenuItem>
+                        <MenuItem value="Oldies">Oldies</MenuItem>
                         <MenuItem value="Other">Other</MenuItem>
                       </Select>
                     </Grid>

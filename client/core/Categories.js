@@ -97,14 +97,17 @@ export default function Categories(){
                   
                     <Paper style={{ padding: 16 }}>
                       <List>
-                          <Link style={{color: "black", fontSize: 17}}> American Slang</Link> <br/>
-                          <Link style={{color: "black", fontSize: 17}}> Anime</Link> <br/>
-                          <Link style={{color: "black", fontSize: 17}}> Best of the Best</Link> <br/>
-                          <Link style={{color: "black", fontSize: 17}}> British Slang</Link> <br/>
-                          <Link style={{color: "black", fontSize: 17}}> Creole </Link> <br/>
-                          <Link style={{color: "black", fontSize: 17}}> Creole </Link> <br/>
-                          
-                   
+                        
+                          <Link style={{color: "black", fontSize: 17}} href = {"/search/cat/Anime"}> Anime</Link> <br/>
+                          <Link style={{color: "black", fontSize: 17}} href = {"/search/cat/BestOfTheBest"}> Best of the Best</Link> <br/>
+                          <Link style={{color: "black", fontSize: 17}} href = {"/search/cat/Creole"}> Creole </Link> <br/>
+                          <Link style={{color: "black", fontSize: 17}} href = {"/search/cat/Slang"}> Slang</Link> <br/>
+                          <Link style={{color: "black", fontSize: 17}} href = {"/search/cat/Historical"}> Historical</Link> <br/>
+                          <Link style={{color: "black", fontSize: 17}} href = {"/search/cat/LGBTQ+"}> LGBTQ+ Term</Link> <br/>
+                          <Link style={{color: "black", fontSize: 17}} href = {"/search/cat/ForeignLanguage"}> Foreign Language</Link> <br/>
+                          <Link style={{color: "black", fontSize: 17}} href = {"/search/cat/Gaming"}> Gaming </Link> <br/>
+                          <Link style={{color: "black", fontSize: 17}} href = {"/search/cat/Other"}> Other </Link> <br/>
+
                       </List>
                 
                 </Paper>
