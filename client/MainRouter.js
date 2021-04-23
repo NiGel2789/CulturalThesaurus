@@ -16,7 +16,6 @@ import SearchResults from './core/SearchResults'
 
 const MainRouter = () => {
     return (<div>
-      <Menu/>
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/users" component={Users}/>
