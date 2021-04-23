@@ -40,6 +40,7 @@ app.use(helmet())
 app.use(cors())
 
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
+app.use(express.static(path.join(__dirname, "client/build")))
 
 // mount routes
 app.use('/', userRoutes)

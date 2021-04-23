@@ -1,4 +1,10 @@
 /node_modules/
+
 /dist/
+
 /data/
+
 npm-debug.log
+
+/node_modules
+package-lock.json
