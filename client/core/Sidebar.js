@@ -8,7 +8,7 @@ import Link from '@material-ui/core/Link';
 import dwayne from '../assets/images/dwayne.gif';
 import { withStyles } from '@material-ui/core/styles';
 import { BorderAllRounded } from '@material-ui/icons';
-
+import createAWord from '../assets/images/createawordbanner.png';
 const WhiteTextTypography = withStyles({
   root: {
     color: "#FFFFFF"
@@ -53,6 +53,7 @@ export default function Sidebar(props) {
         <Typography>{contributeDesc}</Typography>
 
         <a href="/createword"><img src={dwayne} alt="loading..." style={{ minWidth: '202px', maxWidth: '202px', minHeight: '163px', maxHeight: '163px', objectFit: 'cover', marginTop: '10px'}} /> </a>
+        <a href="/createword"><img src={createAWord} alt="loading..." style={{ maxHeight: '163px', objectFit: 'cover', marginTop: '10px'}} /> </a>
       </Paper>
 
       <WhiteTextTypography variant="h6" gutterBottom className={classes.sidebarSection} style={{textDecoration: "yellow   underline"}}>
